@@ -1,0 +1,193 @@
+html {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: #F6F6F6;
+    overflow-x:auto;
+    overflow-y:scroll;
+    }
+    body, dl, dt, dd, ul, ol, li, pre, form, fieldset, input, p, blockquote, th, td {
+    font-weight:400;
+    margin:0;
+    padding:0;
+    }
+    h1, h2, h3, h4, h4, h5 {
+    margin:0;
+    padding:0;
+    }
+    body {
+    background-color:#FFFFFF;
+    color:#666666;
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:12px;
+    padding:0 10px;
+    text-align:left;
+    }
+    select {
+    font-size:12px;
+    }
+    table {
+    border-collapse:collapse;
+    }
+    fieldset, img {
+    border:0 none;
+    }
+    fieldset {
+    margin:0;
+    padding:0;
+    }
+    fieldset p {
+    margin:0;
+    padding:0 0 0 8px;
+    }
+    legend {
+    display:none;
+    }
+    address, caption, em, strong, th, i {
+    font-style:normal;
+    font-weight:400;
+    }
+    table caption {
+    margin-left:-1px;
+    }
+    hr {
+    border-bottom:1px solid #FFFFFF;
+    border-top:1px solid #E4E4E4;
+    border-width:1px 0;
+    clear:both;
+    height:2px;
+    margin:5px 0;
+    overflow:hidden;
+    }
+    ol, ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    }
+    caption, th {
+    text-align:left;
+    }
+    q:before, q:after, blockquote:before, blockquote:after {
+    content:””;
+    }
+
+
+
+
+
+
+
+    html,body,#app{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        background: #F6F6F6;
+      }
+      a{
+        text-decoration: none;
+      }
+      .font14{
+        font-size: 14px;
+      }
+      .backfff{
+        background: #fff;
+      }
+      .backf6f6f6{
+        background: #f6f6f6;
+      }
+      .color8590a6{
+        color: #8590a6;
+      }
+      .color0084ff{
+        color: #0084ff;
+      }
+      .backE5F2FF{
+        background: #E5F2FF;
+      }
+      .margin10{
+        margin: 10px auto !important;
+      }
+      .marginT10{
+        margin-top: 10px;
+      }
+      .padding5{
+        padding: 10px auto !important;
+      }
+      .padding10{
+        padding: 10px;
+      }
+      .padding20{
+        padding: 20px;
+      }
+      .paddingB20{
+        padding-bottom: 20px;
+      }
+      .paddingTB10{
+        padding:10px 0px;
+      }
+      .paddingB10{
+        padding-bottom: 10px;
+      }
+      .marginB5{
+        margin-bottom: 5px;
+      }
+      .marginLR4{
+        margin: 0px 2px;
+      }
+      .marginB20{
+        margin-bottom: 20px;
+      }
+      .borderBottomf0f2f7{
+        border-bottom: 1px solid #f0f2f7;
+      }
+      .content{
+          max-width: 1000px;
+          margin: 0 auto;
+          height: 100%;
+      }
+      .nbspLeft5{
+        margin-left: 5px;
+      }
+      .nbspLeft10{
+        margin-left: 10px;
+      }
+      .marginL24{
+        margin-left: 24px;
+      }
+      .flexRow{
+          display: flex;
+          flex-direction: row;
+      }
+      .flexItem{
+        display: flex;
+        align-items: center;
+      }
+      .flexEnd{
+        display: flex;
+        justify-content: flex-end;
+      }
+      .flexBetween{
+        display: flex;
+        justify-content:space-between;
+      }
+      .felxCenter{
+        display: flex;
+        justify-content: center;
+      }
+      .felxCenterWrap{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .flexCenterCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .flexAround{
+        display: flex;
+        justify-content:space-around;
+      }
+      .fontBold{
+        font-weight: bold;
+      }
