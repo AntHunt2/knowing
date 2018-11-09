@@ -72,51 +72,115 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data :function() {
-    return{ 
-        input: "",
-        activeName: "first",
-        newsList:[]
-    }
+  data: function() {
+    return {
+      input: "",
+      activeName: "first",
+      newsList: []
+    };
   },
-  created(){
-    this.getList();
+  created() {
+    var that = this;
+    var a=1;
+    window.onscroll = function() {
+      if (that.getScrollTop() == 0){
+        console.log("顶部");
+      }
+    //   console.log(that.getScrollTop());
+      if (that.getScrollTop() + that.getWindowHeight() == that.getScrollHeight()){
+        console.log("已经到最底部了！!");
+      }
+    //   console.log(that.getScrollHeight()-that.getScrollTop());
+      if(that.getScrollHeight()-that.getScrollTop()<2000){
+          console.log(a);
+          that.getList(a);
+          a++;
+          a=a;
+      } 
+    }; 
+    this.getList(a);
   },
   methods: {
-    getList:function(){
-        axios.get('http://51eliao.com:9020/questionController/selectQuesionByParam.do?pageNum=1&questionType=1')
-        .then(response=>{
-            console.log(response.data); 
-            this.newsList=response.data.data.list;
+    getList: function(pageNum) {
+      axios.get(
+          "http://51eliao.com:9020/questionController/selectQuesionByParam.do?questionType=1&pageNum="+pageNum
+        )
+        .then(response => {
+          console.log(response.data);
+          this.newsList = response.data.data.list;
         })
-        .catch(error=>{
-            console.log(error);
-            alert('网络错误，不能访问');
-        })
+        .catch(error => {
+          console.log(error);
+          alert("网络错误，不能访问");
+        });
     },
-    handleClick:function(tab, event) {
+    handleClick: function(tab, event) {
       // console.log(tab, event);
     },
     open3() {
-        this.$prompt('请输入邮箱', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-          inputErrorMessage: '邮箱格式不正确'
-        }).then(({ value }) => {
+      this.$prompt("请输入邮箱", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+        inputErrorMessage: "邮箱格式不正确"
+      })
+        .then(({ value }) => {
           this.$message({
-            type: 'success',
-            message: '你的邮箱是: ' + value
+            type: "success",
+            message: "你的邮箱是: " + value
           });
-        }).catch(() => {
+        })
+        .catch(() => {
           this.$message({
-            type: 'info',
-            message: '取消输入'
-          });       
+            type: "info",
+            message: "取消输入"
+          });
         });
+    },
+    getScrollTop: function() {
+      var scrollTop = 0,
+        bodyScrollTop = 0,
+        documentScrollTop = 0;
+      if (document.body) {
+        bodyScrollTop = document.body.scrollTop;
       }
+      if (document.documentElement) {
+        documentScrollTop = document.documentElement.scrollTop;
+      }
+      scrollTop =
+        bodyScrollTop - documentScrollTop > 0
+          ? bodyScrollTop
+          : documentScrollTop;
+      return scrollTop;
+    },
+    //文档的总高度
+    getScrollHeight: function() {
+      var scrollHeight = 0,
+        bodyScrollHeight = 0,
+        documentScrollHeight = 0;
+      if (document.body) {
+        bodyScrollHeight = document.body.scrollHeight;
+      }
+      if (document.documentElement) {
+        documentScrollHeight = document.documentElement.scrollHeight;
+      }
+      scrollHeight =
+        bodyScrollHeight - documentScrollHeight > 0
+          ? bodyScrollHeight
+          : documentScrollHeight;
+      return scrollHeight;
+    },
+    getWindowHeight: function() {
+      var windowHeight = 0;
+      if (document.compatMode == "CSS1Compat") {
+        windowHeight = document.documentElement.clientHeight;
+      } else {
+        windowHeight = document.body.clientHeight;
+      }
+      return windowHeight;
+    }
   }
 };
 </script>
@@ -160,7 +224,7 @@ export default {
 .el-button--primary {
   margin-left: 10px;
 }
-.iconfont{
+.iconfont {
   font-size: 24px;
   /* color: #8590a6; */
 }
@@ -203,57 +267,57 @@ export default {
 }
 .indexListContent {
   height: 42px;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.praise{
-    /* border: 1px solid red; */
-    border-radius: 2px;
-    padding: 0 12px;
-    line-height: 30px;
-    color: #0084ff;
+.praise {
+  /* border: 1px solid red; */
+  border-radius: 2px;
+  padding: 0 12px;
+  line-height: 30px;
+  color: #0084ff;
 }
-.praise>span{
-    margin-left: 2px;
+.praise > span {
+  margin-left: 2px;
 }
-.icon-shang-copy{
-    margin-left: 6px;
-    /* padding-left: 8px; */
+.icon-shang-copy {
+  margin-left: 6px;
+  /* padding-left: 8px; */
 }
-.rightContent{
-    padding: 20px 0px;
+.rightContent {
+  padding: 20px 0px;
 }
-.edit{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f2f7;
+.edit {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f2f7;
 }
-.edit>a{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #8590a6;
+.edit > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #8590a6;
 }
-.edit>a>span{
-    margin-top: 10px;
-    color: #444;
-    font-size: 14px;
+.edit > a > span {
+  margin-top: 10px;
+  color: #444;
+  font-size: 14px;
 }
-.caogao{
-    width: 80%;
-    padding-top: 10px;
+.caogao {
+  width: 80%;
+  padding-top: 10px;
 }
-.caogao span:nth-of-type(1) i{
-    color: #8590a6;
+.caogao span:nth-of-type(1) i {
+  color: #8590a6;
 }
-.caogao span:nth-of-type(2){
-    background: #f6f6f6;
-    text-align: center;
-    line-height: 30px;
-} 
+.caogao span:nth-of-type(2) {
+  background: #f6f6f6;
+  text-align: center;
+  line-height: 30px;
+}
 </style>
